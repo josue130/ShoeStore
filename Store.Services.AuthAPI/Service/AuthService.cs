@@ -24,7 +24,7 @@ namespace Store.Services.AuthAPI.Service
             {
                 if (!_roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult())
                 {
-                    //create role if it does not exist
+
                     _roleManager.CreateAsync(new IdentityRole(roleName)).GetAwaiter().GetResult();
                 }
                 await _userManager.AddToRoleAsync(user, roleName);
