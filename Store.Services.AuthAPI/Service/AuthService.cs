@@ -11,11 +11,13 @@ namespace Store.Services.AuthAPI.Service
         private readonly AppDbContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public AuthService(AppDbContext db, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
+        private readonly IJwtTokenGenerator _jwtTokenGenerator;
+        public AuthService(IJwtTokenGenerator jwtTokenGenerator,AppDbContext db, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
         {
             _db = db;
             _roleManager = roleManager;
             _userManager = userManager;
+            _jwtTokenGenerator = jwtTokenGenerator;
         }
         public async Task<bool> AssignRole(string email, string roleName)
         {
@@ -51,7 +53,7 @@ namespace Store.Services.AuthAPI.Service
                 PhoneNumber = user.PhoneNumber
             };
             var roles = await _userManager.GetRolesAsync(user);
-            var token = "";
+            var token = _jwtTokenGenerator.GenerateToken(user, roles);
             LoginResponseDto loginResponseDto = new LoginResponseDto()
             {
                 User = userDTO,
