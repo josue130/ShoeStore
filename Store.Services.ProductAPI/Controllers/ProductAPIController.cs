@@ -53,7 +53,7 @@ namespace Store.Services.ProductAPI.Controllers
             return Ok(_response);
         }
         [HttpPost]
-        //[Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Post([FromBody] ProductDto model)
         {
             try
@@ -69,7 +69,7 @@ namespace Store.Services.ProductAPI.Controllers
             return Ok(_response);
         }
         [HttpPut]
-        //[Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Put([FromBody] ProductDto model)
         {
             try
@@ -88,7 +88,7 @@ namespace Store.Services.ProductAPI.Controllers
 
         [HttpDelete]
         [Route("{id:guid}")]
-        //[Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Delete(Guid id)
         {
             try
