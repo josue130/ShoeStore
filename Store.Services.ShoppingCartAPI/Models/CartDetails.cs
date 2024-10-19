@@ -12,6 +12,8 @@ namespace Store.Services.ShoppingCartAPI.Models
         public CartHeader CartHeader { get; set; }
         public Guid ProductId { get; set; }
         public int Count { get; set; }
+        [NotMapped]
+        public ProductDto Product { get; set; }
 
     }
 }
