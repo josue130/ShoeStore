@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Store.Services.ShoppingCartAPI.Models.Dto;
 
 namespace Store.Services.ShoppingCartAPI.Models
 {

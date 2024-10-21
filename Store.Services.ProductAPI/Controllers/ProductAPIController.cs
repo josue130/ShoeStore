@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Store.Services.ProductAPI.Models;
 using Store.Services.ProductAPI.Models.Dto;
 using Store.Services.ProductAPI.Service.IService;
 
@@ -8,7 +7,7 @@ using Store.Services.ProductAPI.Service.IService;
 
 namespace Store.Services.ProductAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/products")]
     [ApiController]
     public class ProductAPIController : ControllerBase
     {
