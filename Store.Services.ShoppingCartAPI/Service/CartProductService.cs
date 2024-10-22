@@ -18,8 +18,8 @@ namespace Store.Services.ShoppingCartAPI.Service
         {
             var client = _httpClientFactory.CreateClient("Product");
             var response = await client.GetAsync($"/api/products");
-            var apiContet = await response.Content.ReadAsStringAsync();
-            var resp = JsonConvert.DeserializeObject<ResponseDto>(apiContet);
+            var apiContent = await response.Content.ReadAsStringAsync();
+            var resp = JsonConvert.DeserializeObject<ResponseDto>(apiContent);
             if (resp.IsSuccess)
             {
                 return JsonConvert.DeserializeObject<IEnumerable<ProductDto>>(Convert.ToString(resp.Result));

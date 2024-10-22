@@ -2,6 +2,8 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Store.Services.ShoppingCartAPI;
 using Store.Services.ShoppingCartAPI.Data;
+using Store.Services.ShoppingCartAPI.Service;
+using Store.Services.ShoppingCartAPI.Service.IService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,10 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddControllers();
+builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<ICartProductService, CartProductService>();
+builder.Services.AddHttpClient("Product", p => p.BaseAddress =
+new Uri(builder.Configuration["ServiceUrls:ProductAPI"]));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
