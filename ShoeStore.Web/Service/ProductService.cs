@@ -47,7 +47,7 @@ namespace ShoeStore.Web.Service
             return await _baseService.SendAsync(new RequestDto()
             {
                 ApiType = SD.ApiType.GET,
-                Url = SD.ProductAPIBase + "/api/product/" + id
+                Url = SD.ProductAPIBase + "/api/products/" + id
             });
         }
 

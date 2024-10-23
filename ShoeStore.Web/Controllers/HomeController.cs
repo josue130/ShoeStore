@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using ShoeStore.Web.Models;
@@ -31,10 +32,18 @@ namespace ShoeStore.Web.Controllers
 
             return View(list);
         }
-
-        public IActionResult Privacy()
+        [Authorize]
+        public async Task<IActionResult> ProductDetails(Guid productId)
         {
-            return View();
+            ProductDto? model = new();
+            ResponseDto? response = await _productService.GetProductByIdAsync(productId);
+
+            if (response != null && response.IsSuccess)
+            {
+                model = JsonConvert.DeserializeObject<ProductDto>(Convert.ToString(response.Result));
+            }
+            return View(model);
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
