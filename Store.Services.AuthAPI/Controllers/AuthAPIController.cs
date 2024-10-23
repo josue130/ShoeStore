@@ -6,7 +6,7 @@ using Store.Services.AuthAPI.Service.IService;
 
 namespace Store.Services.AuthAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthAPIController : ControllerBase
     {
