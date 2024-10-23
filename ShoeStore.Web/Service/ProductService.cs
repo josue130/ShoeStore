@@ -18,7 +18,7 @@ namespace ShoeStore.Web.Service
             {
                 ApiType = SD.ApiType.POST,
                 Data = productDto,
-                Url = SD.ProductAPIBase + "/api/product"
+                Url = SD.ProductAPIBase + "/api/products"
             });
         }
 
@@ -27,7 +27,7 @@ namespace ShoeStore.Web.Service
             return await _baseService.SendAsync(new RequestDto()
             {
                 ApiType = SD.ApiType.DELETE,
-                Url = SD.ProductAPIBase + "/api/product/" + id
+                Url = SD.ProductAPIBase + "/api/products/" + id
             });
         }
 
@@ -57,7 +57,7 @@ namespace ShoeStore.Web.Service
             {
                 ApiType = SD.ApiType.PUT,
                 Data = productDto,
-                Url = SD.ProductAPIBase + "/api/product"
+                Url = SD.ProductAPIBase + "/api/products"
             });
         }
     }
