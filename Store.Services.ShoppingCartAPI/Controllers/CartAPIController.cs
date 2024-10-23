@@ -9,7 +9,7 @@ using Store.Services.ShoppingCartAPI.Service.IService;
 
 namespace Store.Services.ShoppingCartAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/cart")]
     [ApiController]
     public class CartAPIController : ControllerBase
     {
