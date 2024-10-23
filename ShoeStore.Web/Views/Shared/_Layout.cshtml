@@ -15,16 +15,21 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">ShoesWeb</a>
+                <a asp-action="Index" asp-controller="Home"  class="navbar-brand" >ShoesWeb</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04" aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarColor04">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a asp-action="Index" asp-controller="Home" class="nav-link active" >
                                 Home
                                 <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Cart" asp-action="CartIndex">
+                                &nbsp; <i class="bi bi-cart"></i>&nbsp;
                             </a>
                         </li>
                         @if (User.IsInRole(SD.RoleAdmin))
