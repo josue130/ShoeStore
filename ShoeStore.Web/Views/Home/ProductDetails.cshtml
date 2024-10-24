@@ -1,29 +1,32 @@
 ﻿@model ProductDto
 
-<div class="d-flex justify-content-center vh-100">
+<div class="d-flex  justify-content-center ">
     <form method="post">
         <input asp-for="ProductId" hidden />
-        <div class=" d-flex pt-4">
-            <div class="card container" >
-                <div class="card-header bg-dark row" style="border-radius: 0px;">
+        <div class=" d-flex p-4">
+            <div class="card container overflow-hidden">
+                <div class="card-header  row">
                     <div class="col-12 col-md-6">
-                        <h1 class="text-white">@Model.Name</h1>
+                        <h1 >@Model.Name</h1>
                     </div>
                     <div class="col-12 col-md-6 text-end">
-                        <h1 class="text-warning"> @string.Format("{0:c}", Model.Price)</h1>
+                        <h1 class="text-danger">Price: @string.Format("{0:c}", Model.Price)</h1>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="container  p-2">
                         <div class="row">
                             <div class="col-12 col-lg-4 p-1 text-center">
-                                <img src="@Model.ImageUrl" style="border-radius:35px;" width="100%" class="rounded" />
+                                <div class="img-container" onmousemove="zoom(event)" onmouseleave="resetZoom()">
+                                    <img src="@Model.ImageUrl" style="border-radius:35px;" width="100%" class="rounded card-img-top" />
+                                </div>
+                                    
                             </div>
                             <div class="col-12 col-lg-8">
                                 <div class="row pl-3">
 
                                     <div class="col-12">
-                                        <span class="badge bg-primary text-white p-3 border">@Model.CategoryName</span>
+                                        <h3>Description:</h3>
                                         <p class="text-secondary pt-3">@Html.Raw(Model.Description)</p>
                                     </div>
                                 </div>
@@ -51,5 +54,6 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/site.js"></script>
 }
 
