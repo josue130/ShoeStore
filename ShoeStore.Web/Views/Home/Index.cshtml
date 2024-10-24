@@ -5,13 +5,13 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }   
     .card:hover{
-        transform: translateY(-10px); /* Lo levanta 10px hacia arriba */
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Agrega más sombra al hacer hover */
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 </style>
 
 <form>
-    <div class="d-flex justify-content-center row">
+    <div class="d-flex justify-content-center row ">
         @foreach (var product in Model)
         {
             <div class="col-12 col-md-6 col-lg-2">
