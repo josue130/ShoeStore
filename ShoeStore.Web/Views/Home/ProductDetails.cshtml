@@ -30,21 +30,23 @@
                                         <p class="text-secondary pt-3">@Html.Raw(Model.Description)</p>
                                     </div>
                                 </div>
-                                <div class="row mx-0">
-                                    <input asp-for="Count" class="form-control" />
+                                <div class="column  mx-0">
+                                    <div class="d-flex gap-3">
+                                        <input asp-for="Count" class="form-control w-50" /> 
+                                        <button type="submit" class="btn btn-primary btn-lg" style="height:50px;">Add</button>
+                                    </div>
                                     <span asp-validation-for="Count" class="text-danger"></span>
+                                 
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer row">
-                    <div class="col-12 col-md-6 pb-1 ">
+                    <div class="d-flex ">
                         <a asp-action="Index" class="btn btn-secondary btn-square form-control btn-lg" style="height:50px;">Back to List</a>
                     </div>
-                    <div class="col-12 col-md-6 ">
-                        <button type="submit" class="btn btn-primary form-control btn-lg" style="height:50px;">Add to Cart</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
