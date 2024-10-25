@@ -31,8 +31,6 @@ namespace ShoeStore.Web.Service
                     message.Headers.Add("Authorization", $"Bearer {token}");
                 }
 
-
-
                 message.RequestUri = new Uri(requestDto.Url);
 
                 if (requestDto.Data != null)
@@ -64,12 +62,7 @@ namespace ShoeStore.Web.Service
             }
             catch (Exception ex)
             {
-                var dto = new ResponseDto
-                {
-                    Message = ex.Message.ToString(),
-                    IsSuccess = false
-                };
-                return dto;
+                return new() { IsSuccess=false, Message = ex.Message.ToString()};
             }
         }
         private ResponseDto CreateErrorResponse(string message) 
