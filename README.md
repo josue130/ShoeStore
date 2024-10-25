@@ -1,20 +1,34 @@
-# Microservices example
+# Microservices Example
 
-## Project description
-This project is a simple example of microservices, I used 3 apis (Auth with JWT and Identity, Product and ShoppingCart) with a MVC project.
-You can consume all the APIS from MVC project with a Gateway using Ocelot.
+## Project Description  
+This project demonstrates a simple **microservices architecture** using three APIs:  
+1. **Auth API** – Uses **JWT** and **ASP.NET Identity** for authentication and authorization.  
+2. **Product API** – Manages product-related operations (CRUD).  
+3. **Shopping Cart API** – Handles the shopping cart operations.
 
-## Prerequisites
-- .NET 8
-- ASP.NET Core
-- Entity Framework Core
-- SQL Server
-- Ocelot
+These APIs are consumed by an **MVC project** through an **API Gateway** implemented with **Ocelot**.
 
+
+## Prerequisites  
+Make sure you have the following installed:  
+- **.NET 8**
+- **ASP.NET Core**
+- **Entity Framework Core**
+- **SQL Server**
+- **Ocelot** (for the API Gateway)
+
+ 
 ## How to Run
 1. Clone the repository.
 2. Set up the connection string in `appsettings.json`.
-3. Run the project.
+3. Run **all** the projects.
+
+## Users
+The system supports two types of users:
+
+- Admin Users: Can create, update, and delete products.
+- Regular Users: Can view products and manage the shopping cart.
+
 
 
 ## License
