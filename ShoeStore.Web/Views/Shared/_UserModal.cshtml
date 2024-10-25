@@ -1,0 +1,37 @@
+﻿
+
+<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userModalLabel">User Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <p>Welcome, @User.Identity.Name!</p>
+                    <ul>
+                        <li>Email: @User.Identity.Name</li>
+                        <li>Role: @User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Role)?.Value</li>
+                    </ul>
+                }
+                else
+                {
+                    <div class="d-flex justify-content-center gap-3">
+                        <a asp-controller="Auth" asp-action="Login" class="btn btn-info">Login</a>
+                        <a asp-controller="Auth" asp-action="Register" class="btn btn-info">Register</a>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="Auth" asp-action="Logout" class="btn btn-danger">Logout</a>
+                  
+                }
+                
+            </div>
+        </div>
+    </div>
+</div>

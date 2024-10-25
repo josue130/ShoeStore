@@ -27,16 +27,12 @@
                                 <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Cart" asp-action="CartIndex">
-                                &nbsp; <i class="bi bi-cart"></i>&nbsp;
-                            </a>
-                        </li>
+                    
                         @if (User.IsInRole(SD.RoleAdmin))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Content Management
+                                    Inventory
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" asp-controller="Product" asp-action="ProductIndex">Product</a></li>
@@ -44,26 +40,19 @@
                                 </ul>
                             </li>
                         }
+                        
                     </ul>
                     <ul class="navbar-nav">
-                        @if (!User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link " asp-controller="Auth" asp-action="Login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " asp-controller="Auth" asp-action="Register">Register</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link " href="#">Hello @User.Identity.Name</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " asp-controller="Auth" asp-action="Logout">Logout</a>
-                            </li>
-                        }
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#userModal">
+                                <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Cart" asp-action="CartIndex">
+                                <i class="bi bi-cart" style="font-size: 1.5rem;"></i>
+                            </a>
+                        </li>
                     </ul>
                  
                 </div>
@@ -89,5 +78,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    @await Html.PartialAsync("_UserModal")
+
 </body>
 </html>
