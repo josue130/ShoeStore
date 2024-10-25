@@ -42,39 +42,25 @@ namespace ShoeStore.Web.Service
 
                 HttpResponseMessage? apiResponse = null;
 
-                switch (requestDto.ApiType)
+                message.Method = requestDto.ApiType switch
                 {
-                    case ApiType.POST:
-                        message.Method = HttpMethod.Post;
-                        break;
-                    case ApiType.DELETE:
-                        message.Method = HttpMethod.Delete;
-                        break;
-                    case ApiType.PUT:
-                        message.Method = HttpMethod.Put;
-                        break;
-                    default:
-                        message.Method = HttpMethod.Get;
-                        break;
-                }
-
+                    ApiType.POST => HttpMethod.Post,
+                    ApiType.PUT => HttpMethod.Put,
+                    ApiType.DELETE => HttpMethod.Delete,
+                    _ => HttpMethod.Get
+                };
+                
                 apiResponse = await client.SendAsync(message);
 
-                switch (apiResponse.StatusCode)
+                var apiResponseDto = apiResponse.StatusCode switch
                 {
-                    case HttpStatusCode.NotFound:
-                        return new() { IsSuccess = false, Message = "Not Found" };
-                    case HttpStatusCode.Forbidden:
-                        return new() { IsSuccess = false, Message = "Access Denied" };
-                    case HttpStatusCode.Unauthorized:
-                        return new() { IsSuccess = false, Message = "Unauthorized" };
-                    case HttpStatusCode.InternalServerError:
-                        return new() { IsSuccess = false, Message = "Internal Server Error" };
-                    default:
-                        var apiContent = await apiResponse.Content.ReadAsStringAsync();
-                        var apiResponseDto = JsonConvert.DeserializeObject<ResponseDto>(apiContent);
-                        return apiResponseDto;
-                }
+                    HttpStatusCode.NotFound => CreateErrorResponse("Not Found"),
+                    HttpStatusCode.Forbidden => CreateErrorResponse("Access Denied"),
+                    HttpStatusCode.Unauthorized => CreateErrorResponse("Unauthorized"),
+                    HttpStatusCode.InternalServerError => CreateErrorResponse("Internal Server Error"),
+                    _ => await HandleSuccessResponse(apiResponse)
+                };
+                return apiResponseDto;
             }
             catch (Exception ex)
             {
@@ -85,6 +71,14 @@ namespace ShoeStore.Web.Service
                 };
                 return dto;
             }
+        }
+        private ResponseDto CreateErrorResponse(string message) 
+            => new() { IsSuccess = false, Message = message };
+
+        private async Task<ResponseDto> HandleSuccessResponse(HttpResponseMessage apiResponse)
+        {
+            var apiContent = await apiResponse.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<ResponseDto>(apiContent);
         }
     }
 }
