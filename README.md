@@ -1,5 +1,5 @@
 # Microservices Example
-
+![alt text](https://github.com/josue130/ShoeStore/blob/master/Assets/ShoeStoreDiagram.PNG "Img")
 ## Project Description  
 This project demonstrates a simple **microservices architecture** using three APIs:  
 1. **Auth API** – Uses **JWT** and **ASP.NET Identity** for authentication and authorization.  
