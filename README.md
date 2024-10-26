@@ -6,7 +6,7 @@ This project demonstrates a simple **microservices architecture** using three AP
 2. **Product API** – Manages product-related operations (CRUD).  
 3. **Shopping Cart API** – Handles the shopping cart operations.
 
-These APIs are consumed by an **MVC project** through an **API Gateway** implemented with **Ocelot**.
+These APIs are consumed by a **MVC project** through an **API Gateway** implemented with **Ocelot**.
 
 
 ## Prerequisites  
