@@ -8,6 +8,13 @@ This project demonstrates a simple **microservices architecture** using three AP
 
 These APIs are consumed by a **MVC project** through an **API Gateway** implemented with **Ocelot**.
 
+## Users
+The system supports two types of users:
+
+- Admin Users: Can create, update, and delete products.
+- Regular Users: Can view products and manage the shopping cart.
+
+
 
 ## Prerequisites  
 Make sure you have the following installed:  
@@ -22,13 +29,6 @@ Make sure you have the following installed:
 1. Clone the repository.
 2. Set up the connection string in `appsettings.json`.
 3. Run **all** the projects.
-
-## Users
-The system supports two types of users:
-
-- Admin Users: Can create, update, and delete products.
-- Regular Users: Can view products and manage the shopping cart.
-
 
 
 ## License
